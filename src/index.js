@@ -12,7 +12,11 @@ function onInputChange(e) {
   console.log(e.currentTarget.value);
 }
 
-fetchCountries('peru');
+fetchCountries('peru')
+  .then(renderCardCountry)
+  .catch(error => {
+    console.log(error);
+  });
 
 const createMarkupCardCountry = ({
   name: { official },
@@ -35,9 +39,9 @@ const createMarkupCardCountry = ({
     <p class="card-subtitle"><span>Population: </span>${population}</p>
     <p class="card-subtitle"><span>Languages: </span>${languages}</p>
     </div>`;
-const makeCardCountry = fetchCountries.map(createMarkupCardCountry).join('');
+// const makeCardCountry = fetchCountries.map(createMarkupCardCountry).join('');
 
-countryInfo.insertAdjacentHTML('beforeend', makeCardCountry);
+// countryInfo.insertAdjacentHTML('beforeend', makeCardCountry);
 
 function renderCardCountry(country) {
   const markup = createMarkupCardCountry(country);
