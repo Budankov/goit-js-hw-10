@@ -10,7 +10,8 @@ const countryInfo = document.querySelector('.country-info');
 searchBox.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange(e) {
-  console.log(e.currentTarget.value);
+  const value = e.target.value;
+  console.log(value.trim());
 }
 
 fetchCountries('peru')
