@@ -21,24 +21,24 @@ fetchCountries('peru')
   });
 
 const createMarkupCardCountry = ({
-  //   name: { official },
+  name: { official },
   capital,
   population,
-  //   flags: { svg },
+  flags: { svg },
   languages,
 }) =>
   `<div class="card">
      <div class="card-header">
         <img
         class="card-flags-img"
-        src="1"
+        src="${svg}"
         alt="Flags"
         />
-        <h1 class="card-title">1</h1>
+        <h1 class="card-title">${official}</h1>
     </div>
-    <p class="card-subtitle"><span>Capital: </span>${{ capital }}</p>
+    <p class="card-subtitle"><span>Capital: </span>${capital}</p>
     <p class="card-subtitle"><span>Population: </span>${population}</p>
-    <p class="card-subtitle"><span>Languages: </span>${languages}</p>
+    <p class="card-subtitle"><span>Languages: </span>${{ languages }}</p>
     </div>`;
 // const makeCardCountry = fetchCountries.map(createMarkupCardCountry).join('');
 
@@ -46,6 +46,6 @@ const createMarkupCardCountry = ({
 
 function renderCardCountry(country) {
   console.log(country);
-  const markup = createMarkupCardCountry(country);
+  const markup = createMarkupCardCountry(country[0]);
   console.log(markup);
 }
