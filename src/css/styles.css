@@ -18,3 +18,21 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+/* Стилі карточки */
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.card-title {
+  margin: 0;
+}
+.card-flags-img {
+  height: 100%;
+}
+.card-subtitle span {
+  font-weight: 700;
+}
