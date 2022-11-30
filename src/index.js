@@ -1,12 +1,13 @@
 import './css/styles.css';
 import { fetchCountries } from './js/fetchCountries';
 
+const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
 
 const searchBox = document.querySelector('#search-box');
 const countryInfo = document.querySelector('.country-info');
 
-searchBox.addEventListener('input', onInputChange);
+searchBox.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange(e) {
   console.log(e.currentTarget.value);
