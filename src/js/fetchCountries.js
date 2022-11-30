@@ -6,6 +6,9 @@ export function fetchCountries(name) {
     .then(response => {
       return response.json();
     })
+    // .then(country => {
+    //   console.log(country);
+    // })
     .then(renderCardCountry)
     .catch(error => {
       console.log(error);

@@ -1,5 +1,5 @@
 import './css/styles.css';
-import fetchCountries, { fetchCountries } from './js/fetchCountries';
+import { fetchCountries } from './js/fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -12,7 +12,7 @@ function onInputChange(e) {
   console.log(e.currentTarget.value);
 }
 
-fetchCountries();
+fetchCountries('peru');
 
 const createMarkupCardCountry = ({
   name: { official },
@@ -35,9 +35,9 @@ const createMarkupCardCountry = ({
     <p class="card-subtitle"><span>Population: </span>${population}</p>
     <p class="card-subtitle"><span>Languages: </span>${languages}</p>
     </div>`;
-// const makeCardCountry = fetchCountries.map(createMarkupCardCountry).join('');
+const makeCardCountry = fetchCountries.map(createMarkupCardCountry).join('');
 
-// countryInfo.insertAdjacentHTML('beforeend', makeCardCountry);
+countryInfo.insertAdjacentHTML('beforeend', makeCardCountry);
 
 function renderCardCountry(country) {
   const markup = createMarkupCardCountry(country);
