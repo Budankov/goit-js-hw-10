@@ -1,0 +1,2 @@
+!function(){var n,e=document.querySelector("#search-box");document.querySelector(".country-info");e.addEventListener("input",(function(n){console.log(n.currentTarget.value)})),fetch("https://restcountries.com/v3.1/name/".concat(n,"?fields=name,capital,population,flags,languages")).then((function(n){return n.json()})).then(renderCardCountry).catch((function(n){console.log(n)}))}();
+//# sourceMappingURL=index.4f528b10.js.map
