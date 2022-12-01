@@ -38,7 +38,9 @@ const createMarkupCardCountry = ({
     </div>
     <p class="card-subtitle"><span>Capital: </span>${capital}</p>
     <p class="card-subtitle"><span>Population: </span>${population}</p>
-    <p class="card-subtitle"><span>Languages: </span>${{ languages }}</p>
+    <p class="card-subtitle"><span>Languages: </span>${Object.values(
+      languages
+    ).join(', ')}</p>
     </div>`;
 // const makeCardCountry = fetchCountries.map(createMarkupCardCountry).join('');
 
