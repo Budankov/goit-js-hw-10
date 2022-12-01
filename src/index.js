@@ -49,5 +49,6 @@ const createMarkupCardCountry = ({
 function renderCardCountry(country) {
   console.log(country);
   const markup = createMarkupCardCountry(country[0]);
+  countryInfo.innerHTML = markup;
   console.log(markup);
 }
