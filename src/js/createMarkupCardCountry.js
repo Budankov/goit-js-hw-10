@@ -1,11 +1,11 @@
-export const createMarkupCardCountry = ({
+export function createMarkupCardCountry({
   name: { official },
   capital,
   population,
   flags: { svg },
   languages,
-}) =>
-  `<div class="card">
+}) {
+  return `<div class="card">
      <div class="card-header">
         <img
         class="card-flags-img"
@@ -20,3 +20,4 @@ export const createMarkupCardCountry = ({
       languages
     ).join(', ')}</p>
     </div>`;
+}

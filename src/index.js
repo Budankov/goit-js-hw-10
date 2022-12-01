@@ -16,17 +16,20 @@ searchBox.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 function onInputChange(e) {
   const value = e.target.value;
 
-  fetchCountries(value.trim())
-    .then(renderCardCountry)
-    .catch(error =>
-      // Notiflix.Notify.failure('Oops, there is no country with that name')
-      console.log(error.massege)
-    );
+  if (value.trim() === '') {
+    clearMarcup();
+  } else {
+    fetchCountries(value.trim())
+      .then(renderCardCountry)
+      .catch(
+        error =>
+          Notiflix.Notify.failure('Oops, there is no country with that name')
+        // console.log(error.massege)
+      );
+  }
 }
 
 function renderCardCountry(country) {
-  // console.log(country);
-
   if (country.length > 10) {
     Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.'
@@ -50,65 +53,3 @@ function clearMarcup() {
   countryList.innerHTML = '';
   countryInfo.innerHTML = '';
 }
-
-//////////////////////////////////////////////////////////
-
-// import './css/styles.css';
-// import Notiflix from 'notiflix';
-// import { fetchCountries } from './js/fetchCountries';
-// import { createListCountries } from './js/createListCountries';
-// import { createMarkupCardCountry } from './js/createMarkupCardCountry';
-
-// const debounce = require('lodash.debounce');
-// const DEBOUNCE_DELAY = 300;
-
-// const searchBox = document.querySelector('#search-box');
-// const countryList = document.querySelector('.country-list');
-// const countryInfo = document.querySelector('.country-info');
-
-// let inputValue = '';
-
-// searchBox.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
-
-// function onInputChange(e) {
-//   inputValue = e.target.value;
-//   // console.log(inputValue);
-
-//   fetchCountries(inputValue.trim())
-//     .then(renderCardCountry)
-//     .catch(
-//       error => console.log(error)
-//       // Notiflix.Notify.failure('Oops, there is no country with that name')
-//     );
-// }
-
-// function renderCardCountry(country) {
-//   // console.log(country);
-
-//   if (country.length > 10) {
-//     Notiflix.Notify.info(
-//       'Too many matches found. Please enter a more specific name.'
-//     );
-//   }
-
-//   if (country.length >= 2 && country.length <= 10) {
-//     const markup = country.map(createListCountries);
-//     clearMarcup();
-//     countryList.insertAdjacentHTML('beforeend', markup.join(''));
-//   }
-
-//   if (country.length === 1) {
-//     const markup = createMarkupCardCountry(country[0]);
-//     clearMarcup();
-//     countryInfo.innerHTML = markup;
-//   }
-
-//   if (inputValue === '') {
-//     clearMarcup();
-//   }
-// }
-
-// function clearMarcup() {
-//   countryList.innerHTML = '';
-//   countryInfo.innerHTML = '';
-// }
