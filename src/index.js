@@ -14,7 +14,7 @@ const countryInfo = document.querySelector('.country-info');
 searchBox.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange(e) {
-  const value = e.target.value;
+  const { value } = e.target;
 
   if (value.trim() === '') {
     clearMarcup();
