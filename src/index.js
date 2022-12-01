@@ -1,5 +1,7 @@
 import './css/styles.css';
 import { fetchCountries } from './js/fetchCountries';
+import { createListCountries } from './js/createListCountries';
+import { createMarkupCardCountry } from './js/createMarkupCardCountry';
 
 const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
@@ -11,44 +13,24 @@ searchBox.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange(e) {
   const value = e.target.value;
-  console.log(value.trim());
+
+  fetchCountries(value.trim())
+    .then(renderCardCountry)
+    .catch(error => {
+      console.log(error);
+    });
 }
 
-fetchCountries('peru')
-  .then(renderCardCountry)
-  .catch(error => {
-    console.log(error);
-  });
-
-const createMarkupCardCountry = ({
-  name: { official },
-  capital,
-  population,
-  flags: { svg },
-  languages,
-}) =>
-  `<div class="card">
-     <div class="card-header">
-        <img
-        class="card-flags-img"
-        src="${svg}"
-        alt="Flags"
-        />
-        <h1 class="card-title">${official}</h1>
-    </div>
-    <p class="card-subtitle"><span>Capital: </span>${capital}</p>
-    <p class="card-subtitle"><span>Population: </span>${population}</p>
-    <p class="card-subtitle"><span>Languages: </span>${Object.values(
-      languages
-    ).join(', ')}</p>
-    </div>`;
-// const makeCardCountry = fetchCountries.map(createMarkupCardCountry).join('');
-
-// countryInfo.insertAdjacentHTML('beforeend', makeCardCountry);
-
 function renderCardCountry(country) {
-  console.log(country);
-  const markup = createMarkupCardCountry(country[0]);
-  countryInfo.innerHTML = markup;
-  console.log(markup);
+  console.log(country.length);
+
+  if (country.length > 2 && country.length < 10) {
+    console.log(country.length);
+  }
+
+  // if (country.length === 1) {
+  //   const markup = createMarkupCardCountry(country[0]);
+  //   countryInfo.innerHTML = markup;
+  //   console.log(markup);
+  // }
 }
